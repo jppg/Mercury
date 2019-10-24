@@ -1,0 +1,77 @@
+@model IEnumerable<Mercury_WebApp.Models.Taxrate>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Salarymin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salarymax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nchildrenmin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nchildrenmax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Taxvalue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Startdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enddate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaritalstatusNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salarymin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salarymax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nchildrenmin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nchildrenmax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Taxvalue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Startdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Enddate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaritalstatusNavigation.MaritalstatusName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TaxrateId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TaxrateId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TaxrateId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

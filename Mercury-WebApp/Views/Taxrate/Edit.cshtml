@@ -1,0 +1,66 @@
+@model Mercury_WebApp.Models.Taxrate
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Taxrate</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TaxrateId" />
+            <div class="form-group">
+                <label asp-for="Salarymin" class="control-label"></label>
+                <input asp-for="Salarymin" class="form-control" />
+                <span asp-validation-for="Salarymin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Salarymax" class="control-label"></label>
+                <input asp-for="Salarymax" class="form-control" />
+                <span asp-validation-for="Salarymax" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Maritalstatus" class="control-label"></label>
+                <select asp-for="Maritalstatus" class="form-control" asp-items="ViewBag.Maritalstatus"></select>
+                <span asp-validation-for="Maritalstatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nchildrenmin" class="control-label"></label>
+                <input asp-for="Nchildrenmin" class="form-control" />
+                <span asp-validation-for="Nchildrenmin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nchildrenmax" class="control-label"></label>
+                <input asp-for="Nchildrenmax" class="form-control" />
+                <span asp-validation-for="Nchildrenmax" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Taxvalue" class="control-label"></label>
+                <input asp-for="Taxvalue" class="form-control" />
+                <span asp-validation-for="Taxvalue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Startdate" class="control-label"></label>
+                <input asp-for="Startdate" class="form-control" />
+                <span asp-validation-for="Startdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Enddate" class="control-label"></label>
+                <input asp-for="Enddate" class="form-control" />
+                <span asp-validation-for="Enddate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
