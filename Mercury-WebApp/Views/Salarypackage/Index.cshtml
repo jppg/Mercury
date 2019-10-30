@@ -1,0 +1,131 @@
+@model IEnumerable<Mercury_WebApp.Models.Salarypackage>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Itemvalue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Percentvalue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Jan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Feb)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.May)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Jun)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Jul)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aug)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sep)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Oct)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nov)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dec)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Finantialcondition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salaryitem)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Itemvalue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Percentvalue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Jan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Feb)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.May)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Jun)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Jul)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aug)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Oct)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nov)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dec)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Finantialcondition.FinantialconditionId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salaryitem.SalaryitemName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

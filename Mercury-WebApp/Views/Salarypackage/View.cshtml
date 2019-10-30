@@ -1,0 +1,122 @@
+@model Tuple<List<Mercury_WebApp.Models.Salarypackage>, Mercury_WebApp.Models.Finantialcondition>
+
+@{
+    ViewData["Title"] = "Finantial Conditions";
+}
+
+<h1>Finantial Conditions</h1>
+<h4>@Html.DisplayFor(model => model.Item2.Employee.EmployeeName)</h4>
+<p>
+    <a asp-action="Create">Add New Item</a>
+</p>
+@if (Model.Item1.Count == 0)
+{
+    <a asp-action="DefaultValues" asp-route-id="@Model.Item2.FinantialconditionId">Add Default Values</a>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Item
+            </th>
+            <th>
+                Value
+            </th>
+            <th>
+                Jan
+            </th>
+            <th>
+                Feb
+            </th>
+            <th>
+                Mar
+            </th>
+            <th>
+                Apr
+            </th>
+            <th>
+                May
+            </th>
+            <th>
+                Jun
+            </th>
+            <th>
+                Jul
+            </th>
+            <th>
+                Aug
+            </th>
+            <th>
+                Sep
+            </th>
+            <th>
+                Oct
+            </th>
+            <th>
+                Nov
+            </th>
+            <th>
+                Dec
+            </th>
+            <th>
+                Notes
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Item1) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salaryitem.SalaryitemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Itemvalue)
+            </td>
+            <td>
+                @Html.CheckBoxFor(modelItem => item.Jan)
+            </td>
+            <td>
+                @Html.CheckBoxFor(modelItem => item.Feb)
+            </td>
+            <td>
+                @Html.CheckBoxFor(modelItem => item.Mar)
+            </td>
+            <td>
+                @Html.CheckBoxFor(modelItem => item.Apr)
+            </td>
+            <td>
+                @Html.CheckBoxFor(modelItem => item.May)
+            </td>
+            <td>
+                @Html.CheckBoxFor(modelItem => item.Jun)
+            </td>
+            <td>
+                @Html.CheckBoxFor(modelItem => item.Jul)
+            </td>
+            <td>
+                @Html.CheckBoxFor(modelItem => item.Aug)
+            </td>
+            <td>
+                @Html.CheckBoxFor(modelItem => item.Sep)
+            </td>
+            <td>
+                @Html.CheckBoxFor(modelItem => item.Oct)
+            </td>
+            <td>
+                @Html.CheckBoxFor(modelItem => item.Nov)
+            </td>
+            <td>
+                @Html.CheckBoxFor(modelItem => item.Dec)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { FinantialconditionId=item.FinantialconditionId, SalaryitemId = item.SalaryitemId }) |
+                @Html.ActionLink("Delete", "Delete", new { FinantialconditionId=item.FinantialconditionId, SalaryitemId = item.SalaryitemId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -15,12 +15,13 @@ namespace Mercury_WebApp.Models
         {
         }
 
+        public virtual DbSet<Allocation> Allocation { get; set; }
         public virtual DbSet<Client> Client { get; set; }
         public virtual DbSet<Employee> Employee { get; set; }
+        public virtual DbSet<Finantialcondition> Finantialcondition { get; set; }
         public virtual DbSet<Maritalstatus> Maritalstatus { get; set; }
         public virtual DbSet<Salaryitem> Salaryitem { get; set; }
         public virtual DbSet<Salarypackage> Salarypackage { get; set; }
-        public virtual DbSet<Simulation> Simulation { get; set; }
         public virtual DbSet<Taxrate> Taxrate { get; set; }
 
         /*
@@ -36,6 +37,41 @@ namespace Mercury_WebApp.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Allocation>(entity =>
+            {
+                entity.ToTable("allocation");
+
+                entity.Property(e => e.AllocationId).HasColumnName("allocation_id");
+
+                entity.Property(e => e.ClientId).HasColumnName("client_id");
+
+                entity.Property(e => e.Dayrate)
+                    .HasColumnName("dayrate")
+                    .HasColumnType("numeric");
+
+                entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
+
+                entity.Property(e => e.Enddate)
+                    .HasColumnName("enddate")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.Startdate)
+                    .HasColumnName("startdate")
+                    .HasColumnType("date");
+
+                entity.HasOne(d => d.Client)
+                    .WithMany(p => p.Allocation)
+                    .HasForeignKey(d => d.ClientId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("allocation_client_fkey");
+
+                entity.HasOne(d => d.Employee)
+                    .WithMany(p => p.Allocation)
+                    .HasForeignKey(d => d.EmployeeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("allocation_employee_fkey");
+            });
+
             modelBuilder.Entity<Client>(entity =>
             {
                 entity.ToTable("client");
@@ -62,8 +98,6 @@ namespace Mercury_WebApp.Models
 
                 entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
 
-                entity.Property(e => e.ClientId).HasColumnName("client_id");
-
                 entity.Property(e => e.EmployeeName)
                     .IsRequired()
                     .HasColumnName("employee_name")
@@ -81,16 +115,34 @@ namespace Mercury_WebApp.Models
                     .HasColumnName("startdate")
                     .HasColumnType("date");
 
-                entity.HasOne(d => d.Client)
-                    .WithMany(p => p.Employee)
-                    .HasForeignKey(d => d.ClientId)
-                    .HasConstraintName("employee_client_fkey");
-
                 entity.HasOne(d => d.Maritalstatus)
                     .WithMany(p => p.Employee)
                     .HasForeignKey(d => d.MaritalstatusId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("employee_maritalstatus_fkey");
+            });
+
+            modelBuilder.Entity<Finantialcondition>(entity =>
+            {
+                entity.ToTable("finantialcondition");
+
+                entity.Property(e => e.FinantialconditionId).HasColumnName("finantialcondition_id");
+
+                entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
+
+                entity.Property(e => e.Enddate)
+                    .HasColumnName("enddate")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.Startdate)
+                    .HasColumnName("startdate")
+                    .HasColumnType("date");
+
+                entity.HasOne(d => d.Employee)
+                    .WithMany(p => p.Finantialcondition)
+                    .HasForeignKey(d => d.EmployeeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("finantialcondition_employee_fkey");
             });
 
             modelBuilder.Entity<Maritalstatus>(entity =>
@@ -111,6 +163,12 @@ namespace Mercury_WebApp.Models
 
                 entity.Property(e => e.SalaryitemId).HasColumnName("salaryitem_id");
 
+                entity.Property(e => e.Apr).HasColumnName("apr");
+
+                entity.Property(e => e.Aug).HasColumnName("aug");
+
+                entity.Property(e => e.Dec).HasColumnName("dec");
+
                 entity.Property(e => e.Defaultvalue)
                     .HasColumnName("defaultvalue")
                     .HasColumnType("numeric");
@@ -123,16 +181,40 @@ namespace Mercury_WebApp.Models
                     .HasColumnName("enddate")
                     .HasColumnType("date");
 
+                entity.Property(e => e.Feb).HasColumnName("feb");
+
                 entity.Property(e => e.Firmcostrate)
                     .HasColumnName("firmcostrate")
                     .HasColumnType("numeric");
 
+                entity.Property(e => e.Incauto).HasColumnName("incauto");
+
                 entity.Property(e => e.Istaxed).HasColumnName("istaxed");
+
+                entity.Property(e => e.Jan).HasColumnName("jan");
+
+                entity.Property(e => e.Jul).HasColumnName("jul");
+
+                entity.Property(e => e.Jun).HasColumnName("jun");
+
+                entity.Property(e => e.Mar).HasColumnName("mar");
+
+                entity.Property(e => e.May).HasColumnName("may");
+
+                entity.Property(e => e.Nov).HasColumnName("nov");
+
+                entity.Property(e => e.Oct).HasColumnName("oct");
+
+                entity.Property(e => e.Percentvalue)
+                    .HasColumnName("percentvalue")
+                    .HasColumnType("numeric");
 
                 entity.Property(e => e.SalaryitemName)
                     .IsRequired()
                     .HasColumnName("salaryitem_name")
                     .HasMaxLength(100);
+
+                entity.Property(e => e.Sep).HasColumnName("sep");
 
                 entity.Property(e => e.Startdate)
                     .HasColumnName("startdate")
@@ -141,53 +223,62 @@ namespace Mercury_WebApp.Models
 
             modelBuilder.Entity<Salarypackage>(entity =>
             {
-                entity.HasKey(e => new { e.SimulationId, e.SalaryitemId })
+                entity.HasKey(e => new { e.FinantialconditionId, e.SalaryitemId })
                     .HasName("salarypackage_pkey");
 
                 entity.ToTable("salarypackage");
 
-                entity.Property(e => e.SimulationId).HasColumnName("simulation_id");
+                entity.Property(e => e.FinantialconditionId).HasColumnName("finantialcondition_id");
 
                 entity.Property(e => e.SalaryitemId).HasColumnName("salaryitem_id");
+
+                entity.Property(e => e.Apr).HasColumnName("apr");
+
+                entity.Property(e => e.Aug).HasColumnName("aug");
+
+                entity.Property(e => e.Dec).HasColumnName("dec");
+
+                entity.Property(e => e.Feb).HasColumnName("feb");
 
                 entity.Property(e => e.Itemvalue)
                     .HasColumnName("itemvalue")
                     .HasColumnType("numeric");
+
+                entity.Property(e => e.Jan).HasColumnName("jan");
+
+                entity.Property(e => e.Jul).HasColumnName("jul");
+
+                entity.Property(e => e.Jun).HasColumnName("jun");
+
+                entity.Property(e => e.Mar).HasColumnName("mar");
+
+                entity.Property(e => e.May).HasColumnName("may");
+
+                entity.Property(e => e.Notes)
+                    .HasColumnName("notes")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.Nov).HasColumnName("nov");
+
+                entity.Property(e => e.Oct).HasColumnName("oct");
+
+                entity.Property(e => e.Percentvalue)
+                    .HasColumnName("percentvalue")
+                    .HasColumnType("numeric");
+
+                entity.Property(e => e.Sep).HasColumnName("sep");
+
+                entity.HasOne(d => d.Finantialcondition)
+                    .WithMany(p => p.Salarypackage)
+                    .HasForeignKey(d => d.FinantialconditionId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("salarypackage_finantialcondition_fkey");
 
                 entity.HasOne(d => d.Salaryitem)
                     .WithMany(p => p.Salarypackage)
                     .HasForeignKey(d => d.SalaryitemId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("salarypackage_salaryitem_fkey");
-
-                entity.HasOne(d => d.Simulation)
-                    .WithMany(p => p.Salarypackage)
-                    .HasForeignKey(d => d.SimulationId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("salarypackage_simulation_fkey");
-            });
-
-            modelBuilder.Entity<Simulation>(entity =>
-            {
-                entity.ToTable("simulation");
-
-                entity.Property(e => e.SimulationId).HasColumnName("simulation_id");
-
-                entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
-
-                entity.Property(e => e.Enddate)
-                    .HasColumnName("enddate")
-                    .HasColumnType("date");
-
-                entity.Property(e => e.Startdate)
-                    .HasColumnName("startdate")
-                    .HasColumnType("date");
-
-                entity.HasOne(d => d.Employee)
-                    .WithMany(p => p.Simulation)
-                    .HasForeignKey(d => d.EmployeeId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("simulation_employee_fkey");
             });
 
             modelBuilder.Entity<Taxrate>(entity =>

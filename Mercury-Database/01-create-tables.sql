@@ -2,10 +2,12 @@
 drop table if exists taxrate;
 drop table if exists salarypackage;
 drop table if exists salaryitem;
-drop table if exists simulation;
+drop table if exists finantialcondition;
+drop table if exists allocation;
 drop table if exists employee;
 drop table if exists client;
 drop table if exists maritalstatus;
+
 */
 
 CREATE TABLE maritalstatus
@@ -43,13 +45,24 @@ CREATE TABLE employee(
    employee_name varchar(100) NOT NULL,
    nchildren INT NOT NULL,
    maritalstatus_id INT NOT NULL,
-   client_id INT, 
    startdate DATE NOT NULL,
    enddate DATE,
     CONSTRAINT employee_maritalstatus_fkey FOREIGN KEY (maritalstatus_id)
       REFERENCES maritalstatus (maritalstatus_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+CREATE TABLE allocation(
+   allocation_id serial PRIMARY KEY,
+   employee_id INT NOT NULL,
+   client_id INT NOT NULL,
+   dayrate NUMERIC, 
+   startdate DATE NOT NULL,
+   enddate DATE,
+    CONSTRAINT allocation_employee_fkey FOREIGN KEY (employee_id)
+      REFERENCES employee(employee_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
-    CONSTRAINT employee_client_fkey FOREIGN KEY (client_id)
+    CONSTRAINT allocation_client_fkey FOREIGN KEY (client_id)
       REFERENCES client (client_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 );
@@ -69,28 +82,56 @@ create TABLE salaryitem(
     istaxed BOOLEAN NOT NULL,
     firmcostrate NUMERIC,
     employeecostrate NUMERIC,
-    defaultvalue NUMERIC,    
+    defaultvalue NUMERIC,
+    percentvalue NUMERIC,
+    incauto BOOLEAN,
+    jan BOOLEAN NOT NULL DEFAULT FALSE,
+    feb BOOLEAN NOT NULL DEFAULT FALSE,
+    mar BOOLEAN NOT NULL DEFAULT FALSE,
+    apr BOOLEAN NOT NULL DEFAULT FALSE,
+    may BOOLEAN NOT NULL DEFAULT FALSE,
+    jun BOOLEAN NOT NULL DEFAULT FALSE,
+    jul BOOLEAN NOT NULL DEFAULT FALSE,
+    aug BOOLEAN NOT NULL DEFAULT FALSE,
+    sep BOOLEAN NOT NULL DEFAULT FALSE,
+    oct BOOLEAN NOT NULL DEFAULT FALSE,
+    nov BOOLEAN NOT NULL DEFAULT FALSE,
+    dec BOOLEAN NOT NULL DEFAULT FALSE,
     startdate DATE NOT NULL,
     enddate DATE
 );
 
-create TABLE simulation(
-    simulation_id serial PRIMARY KEY,
+create TABLE finantialcondition(
+    finantialcondition_id serial PRIMARY KEY,
     employee_id INT NOT NULL,    
     startdate DATE NOT NULL,
     enddate DATE,
-    CONSTRAINT simulation_employee_fkey FOREIGN KEY (employee_id)
+    CONSTRAINT finantialcondition_employee_fkey FOREIGN KEY (employee_id)
       REFERENCES employee (employee_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
 create TABLE salarypackage(
-    simulation_id INT NOT NULL,
+    finantialcondition_id INT NOT NULL,
     salaryitem_id INT NOT NULL,
     itemvalue NUMERIC,
-    PRIMARY KEY (simulation_id, salaryitem_id),
-    CONSTRAINT salarypackage_simulation_fkey FOREIGN KEY (simulation_id)
-      REFERENCES simulation (simulation_id) MATCH SIMPLE
+    notes VARCHAR(100),
+    percentvalue NUMERIC,
+    jan BOOLEAN NOT NULL DEFAULT FALSE,
+    feb BOOLEAN NOT NULL DEFAULT FALSE,
+    mar BOOLEAN NOT NULL DEFAULT FALSE,
+    apr BOOLEAN NOT NULL DEFAULT FALSE,
+    may BOOLEAN NOT NULL DEFAULT FALSE,
+    jun BOOLEAN NOT NULL DEFAULT FALSE,
+    jul BOOLEAN NOT NULL DEFAULT FALSE,
+    aug BOOLEAN NOT NULL DEFAULT FALSE,
+    sep BOOLEAN NOT NULL DEFAULT FALSE,
+    oct BOOLEAN NOT NULL DEFAULT FALSE,
+    nov BOOLEAN NOT NULL DEFAULT FALSE,
+    dec BOOLEAN NOT NULL DEFAULT FALSE,
+    PRIMARY KEY (finantialcondition_id, salaryitem_id),
+    CONSTRAINT salarypackage_finantialcondition_fkey FOREIGN KEY (finantialcondition_id)
+      REFERENCES finantialcondition (finantialcondition_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
     CONSTRAINT salarypackage_salaryitem_fkey FOREIGN KEY (salaryitem_id)
       REFERENCES salaryitem (salaryitem_id) MATCH SIMPLE

@@ -1,0 +1,120 @@
+@model Mercury_WebApp.Models.Salarypackage
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Salarypackage</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Itemvalue)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Itemvalue)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Percentvalue)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Percentvalue)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Jan)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Jan)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Feb)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Feb)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Mar)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Mar)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Apr)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Apr)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.May)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.May)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Jun)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Jun)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Jul)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Jul)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Aug)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Aug)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Sep)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Sep)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Oct)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Oct)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nov)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nov)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Dec)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Dec)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Finantialcondition)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Finantialcondition.FinantialconditionId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Salaryitem)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Salaryitem.SalaryitemName)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

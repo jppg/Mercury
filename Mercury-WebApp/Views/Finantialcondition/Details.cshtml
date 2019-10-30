@@ -1,0 +1,36 @@
+@model Mercury_WebApp.Models.Finantialcondition
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Finantial Condition</h1>
+
+<div>
+    <h4>Details</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Employee Name
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Employee.EmployeeName)
+        </dd>
+        <dt class = "col-sm-2">
+            Start Date
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Startdate)
+        </dd>
+        <dt class = "col-sm-2">
+            End Date
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Enddate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.FinantialconditionId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

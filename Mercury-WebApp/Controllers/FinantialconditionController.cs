@@ -9,23 +9,23 @@ using Mercury_WebApp.Models;
 
 namespace Mercury_WebApp.Controllers
 {
-    public class EmployeeController : Controller
+    public class FinantialconditionController : Controller
     {
         private readonly MercuryContext _context;
 
-        public EmployeeController(MercuryContext context)
+        public FinantialconditionController(MercuryContext context)
         {
             _context = context;
         }
 
-        // GET: Employee
+        // GET: Finantialcondition
         public async Task<IActionResult> Index()
         {
-            var mercuryContext = _context.Employee.Include(e => e.Maritalstatus);
+            var mercuryContext = _context.Finantialcondition.Include(f => f.Employee);
             return View(await mercuryContext.ToListAsync());
         }
 
-        // GET: Employee/Details/5
+        // GET: Finantialcondition/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,42 +33,42 @@ namespace Mercury_WebApp.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employee
-                .Include(e => e.Maritalstatus)
-                .FirstOrDefaultAsync(m => m.EmployeeId == id);
-            if (employee == null)
+            var finantialcondition = await _context.Finantialcondition
+                .Include(f => f.Employee)
+                .FirstOrDefaultAsync(m => m.FinantialconditionId == id);
+            if (finantialcondition == null)
             {
                 return NotFound();
             }
 
-            return View(employee);
+            return View(finantialcondition);
         }
 
-        // GET: Employee/Create
+        // GET: Finantialcondition/Create
         public IActionResult Create()
         {
-            ViewData["MaritalstatusId"] = new SelectList(_context.Maritalstatus, "MaritalstatusId", "MaritalstatusName");
+            ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "EmployeeName");
             return View();
         }
 
-        // POST: Employee/Create
+        // POST: Finantialcondition/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EmployeeId,EmployeeName,Nchildren,MaritalstatusId,Startdate,Enddate")] Employee employee)
+        public async Task<IActionResult> Create([Bind("FinantialconditionId,EmployeeId,Startdate,Enddate")] Finantialcondition finantialcondition)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(employee);
+                _context.Add(finantialcondition);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MaritalstatusId"] = new SelectList(_context.Maritalstatus, "MaritalstatusId", "MaritalstatusName", employee.MaritalstatusId);
-            return View(employee);
+            ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "EmployeeName", finantialcondition.EmployeeId);
+            return View(finantialcondition);
         }
 
-        // GET: Employee/Edit/5
+        // GET: Finantialcondition/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -76,23 +76,23 @@ namespace Mercury_WebApp.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employee.FindAsync(id);
-            if (employee == null)
+            var finantialcondition = await _context.Finantialcondition.FindAsync(id);
+            if (finantialcondition == null)
             {
                 return NotFound();
             }
-            ViewData["MaritalstatusId"] = new SelectList(_context.Maritalstatus, "MaritalstatusId", "MaritalstatusName", employee.MaritalstatusId);
-            return View(employee);
+            ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "EmployeeName", finantialcondition.EmployeeId);
+            return View(finantialcondition);
         }
 
-        // POST: Employee/Edit/5
+        // POST: Finantialcondition/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EmployeeId,EmployeeName,Nchildren,MaritalstatusId,Startdate,Enddate")] Employee employee)
+        public async Task<IActionResult> Edit(int id, [Bind("FinantialconditionId,EmployeeId,Startdate,Enddate")] Finantialcondition finantialcondition)
         {
-            if (id != employee.EmployeeId)
+            if (id != finantialcondition.FinantialconditionId)
             {
                 return NotFound();
             }
@@ -101,12 +101,12 @@ namespace Mercury_WebApp.Controllers
             {
                 try
                 {
-                    _context.Update(employee);
+                    _context.Update(finantialcondition);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EmployeeExists(employee.EmployeeId))
+                    if (!FinantialconditionExists(finantialcondition.FinantialconditionId))
                     {
                         return NotFound();
                     }
@@ -117,11 +117,11 @@ namespace Mercury_WebApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MaritalstatusId"] = new SelectList(_context.Maritalstatus, "MaritalstatusId", "MaritalstatusName", employee.MaritalstatusId);
-            return View(employee);
+            ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "EmployeeName", finantialcondition.EmployeeId);
+            return View(finantialcondition);
         }
 
-        // GET: Employee/Delete/5
+        // GET: Finantialcondition/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -129,31 +129,31 @@ namespace Mercury_WebApp.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employee
-                .Include(e => e.Maritalstatus)
-                .FirstOrDefaultAsync(m => m.EmployeeId == id);
-            if (employee == null)
+            var finantialcondition = await _context.Finantialcondition
+                .Include(f => f.Employee)
+                .FirstOrDefaultAsync(m => m.FinantialconditionId == id);
+            if (finantialcondition == null)
             {
                 return NotFound();
             }
 
-            return View(employee);
+            return View(finantialcondition);
         }
 
-        // POST: Employee/Delete/5
+        // POST: Finantialcondition/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var employee = await _context.Employee.FindAsync(id);
-            _context.Employee.Remove(employee);
+            var finantialcondition = await _context.Finantialcondition.FindAsync(id);
+            _context.Finantialcondition.Remove(finantialcondition);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EmployeeExists(int id)
+        private bool FinantialconditionExists(int id)
         {
-            return _context.Employee.Any(e => e.EmployeeId == id);
+            return _context.Finantialcondition.Any(e => e.FinantialconditionId == id);
         }
     }
 }

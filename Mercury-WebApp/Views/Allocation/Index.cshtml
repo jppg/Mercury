@@ -1,10 +1,10 @@
-@model IEnumerable<Mercury_WebApp.Models.Employee>
+@model IEnumerable<Mercury_WebApp.Models.Allocation>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Employees</h1>
+<h1>Allocations</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -16,10 +16,10 @@
                 Employee Name
             </th>
             <th>
-                Marital Status
+                Client
             </th>
             <th>
-                Nr of Childrens
+                Day Rate
             </th>
             <th>
                 Start Date
@@ -27,7 +27,6 @@
             <th>
                 End Date
             </th>
-            
             <th></th>
         </tr>
     </thead>
@@ -35,24 +34,24 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.EmployeeName)
+                @Html.DisplayFor(modelItem => item.Employee.EmployeeName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Maritalstatus.MaritalstatusName)
+                @Html.DisplayFor(modelItem => item.Client.ClientName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Nchildren)
+                @Html.DisplayFor(modelItem => item.Dayrate)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Startdate)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Enddate)
-            </td>            
+            </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.EmployeeId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.EmployeeId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.EmployeeId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.AllocationId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AllocationId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AllocationId">Delete</a>
             </td>
         </tr>
 }

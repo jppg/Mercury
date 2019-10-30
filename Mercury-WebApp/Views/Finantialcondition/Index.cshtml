@@ -1,10 +1,10 @@
-@model IEnumerable<Mercury_WebApp.Models.Client>
+@model IEnumerable<Mercury_WebApp.Models.Finantialcondition>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Clients</h1>
+<h1>Finantial Conditions</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -13,14 +13,14 @@
     <thead>
         <tr>
             <th>
-                Client Name
+                Employee Name
             </th>
             <th>
                 Start Date
             </th>
             <th>
                 End Date
-            </th>
+            </th>            
             <th></th>
         </tr>
     </thead>
@@ -28,7 +28,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ClientName)
+                @Html.DisplayFor(modelItem => item.Employee.EmployeeName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Startdate)
@@ -37,9 +37,8 @@
                 @Html.DisplayFor(modelItem => item.Enddate)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ClientId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ClientId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ClientId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.FinantialconditionId">Edit</a> |
+                <a asp-controller="Salarypackage" asp-action="View" asp-route-id="@item.FinantialconditionId">Details</a>
             </td>
         </tr>
 }

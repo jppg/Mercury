@@ -7,7 +7,7 @@ namespace Mercury_WebApp.Models
     {
         public Client()
         {
-            Employee = new HashSet<Employee>();
+            Allocation = new HashSet<Allocation>();
         }
 
         public int ClientId { get; set; }
@@ -15,6 +15,6 @@ namespace Mercury_WebApp.Models
         public DateTime Startdate { get; set; }
         public DateTime? Enddate { get; set; }
 
-        public virtual ICollection<Employee> Employee { get; set; }
+        public virtual ICollection<Allocation> Allocation { get; set; }
     }
 }

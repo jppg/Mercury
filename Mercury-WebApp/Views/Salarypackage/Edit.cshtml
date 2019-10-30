@@ -1,0 +1,102 @@
+@model Mercury_WebApp.Models.Salarypackage
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>@Html.DisplayFor(model => model.Salaryitem.SalaryitemName)</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="FinantialconditionId" />
+            <input type="hidden" asp-for="SalaryitemId" />
+            <div class="form-group">
+                <label asp-for="Itemvalue" class="control-label"></label>
+                <input asp-for="Itemvalue" class="form-control" />
+                <span asp-validation-for="Itemvalue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notes" class="control-label"></label>
+                <input asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Percentvalue" class="control-label"></label>
+                <input asp-for="Percentvalue" class="form-control" />
+                <span asp-validation-for="Percentvalue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Jan" class="control-label"></label>
+                <input asp-for="Jan" class="form-control" />
+                <span asp-validation-for="Jan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Feb" class="control-label"></label>
+                <input asp-for="Feb" class="form-control" />
+                <span asp-validation-for="Feb" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mar" class="control-label"></label>
+                <input asp-for="Mar" class="form-control" />
+                <span asp-validation-for="Mar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Apr" class="control-label"></label>
+                <input asp-for="Apr" class="form-control" />
+                <span asp-validation-for="Apr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="May" class="control-label"></label>
+                <input asp-for="May" class="form-control" />
+                <span asp-validation-for="May" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Jun" class="control-label"></label>
+                <input asp-for="Jun" class="form-control" />
+                <span asp-validation-for="Jun" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Jul" class="control-label"></label>
+                <input asp-for="Jul" class="form-control" />
+                <span asp-validation-for="Jul" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Aug" class="control-label"></label>
+                <input asp-for="Aug" class="form-control" />
+                <span asp-validation-for="Aug" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sep" class="control-label"></label>
+                <input asp-for="Sep" class="form-control" />
+                <span asp-validation-for="Sep" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Oct" class="control-label"></label>
+                <input asp-for="Oct" class="form-control" />
+                <span asp-validation-for="Oct" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nov" class="control-label"></label>
+                <input asp-for="Nov" class="form-control" />
+                <span asp-validation-for="Nov" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dec" class="control-label"></label>
+                <input asp-for="Dec" class="form-control" />
+                <span asp-validation-for="Dec" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

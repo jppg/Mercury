@@ -1,4 +1,4 @@
-@model Mercury_WebApp.Models.Client
+@model Mercury_WebApp.Models.Finantialcondition
 
 @{
     ViewData["Title"] = "Create";
@@ -6,25 +6,21 @@
 
 <h1>Create</h1>
 
-<h4>Client</h4>
+<h4>Finantialcondition</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="ClientName" class="control-label"></label>
-                <input asp-for="ClientName" class="form-control" />
-                <span asp-validation-for="ClientName" class="text-danger"></span>
+                <label asp-for="EmployeeId" class="control-label"></label>
+                <select asp-for="EmployeeId" class ="form-control" asp-items="ViewBag.EmployeeId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Startdate" class="control-label">Start date:</label>
-                <div>
-                    @Html.EditorFor(m => m.Startdate, "{0:dd/MM/yyyy}", new {htmlAttributes = new { @class = "form-control", @type = "date" } })
-                    @Html.ValidationMessageFor(m => m.Startdate, "", new { @class = "text-danger" })
-                </div>
+                <label asp-for="Startdate" class="control-label"></label>
+                <input asp-for="Startdate" class="form-control" />
+                <span asp-validation-for="Startdate" class="text-danger"></span>
             </div>
-            
             <div class="form-group">
                 <label asp-for="Enddate" class="control-label"></label>
                 <input asp-for="Enddate" class="form-control" />
