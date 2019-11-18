@@ -1,0 +1,155 @@
+@model IEnumerable<Mercury_WebApp.Models.Salaryitem>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SalaryitemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Istaxed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Firmcostrate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employeecostrate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Defaultvalue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Percentvalue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Incauto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Jan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Feb)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.May)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Jun)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Jul)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aug)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sep)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Oct)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nov)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dec)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Startdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enddate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalaryitemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Istaxed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firmcostrate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employeecostrate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Defaultvalue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Percentvalue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Incauto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Jan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Feb)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.May)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Jun)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Jul)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aug)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Oct)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nov)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dec)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Startdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Enddate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SalaryitemId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SalaryitemId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SalaryitemId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

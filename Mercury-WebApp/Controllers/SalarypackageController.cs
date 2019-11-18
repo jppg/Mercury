@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Mercury_WebApp.Models;
+using Mercury_WebApp.Helpers;
 
 namespace Mercury_WebApp.Controllers
 {
@@ -52,18 +53,25 @@ namespace Mercury_WebApp.Controllers
                 return NotFound();
             }
 
-            var salaryPackage = await _context.Salarypackage
+            EmployeeCentric employeeCentric = new EmployeeCentric();
+
+            employeeCentric.SalaryPackage = await _context.Salarypackage
                                     .Include(s => s.Finantialcondition)
                                     .Include(s => s.Salaryitem)
                                     .Where(m => m.FinantialconditionId == id)
                                     .ToListAsync();
 
-            var finantialCond = await _context.Finantialcondition
+            employeeCentric.FinantialCondition = await _context.Finantialcondition
                             .Include(c => c.Employee)
                             .Where(c => c.FinantialconditionId == id)
                             .FirstOrDefaultAsync();
 
-            return View(Tuple.Create(salaryPackage, finantialCond));
+            
+            EmployeeHelper employeeHelper = new EmployeeHelper(_context);
+            
+            employeeCentric.TotalCost = employeeHelper.CalculateTotalCost(employeeCentric.SalaryPackage);                
+
+            return View(employeeCentric);
         }
 
         // GET: Salarypackage/Create

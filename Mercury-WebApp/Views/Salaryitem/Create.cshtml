@@ -1,0 +1,130 @@
+@model Mercury_WebApp.Models.Salaryitem
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Salaryitem</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SalaryitemName" class="control-label"></label>
+                <input asp-for="SalaryitemName" class="form-control" />
+                <span asp-validation-for="SalaryitemName" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Istaxed" /> @Html.DisplayNameFor(model => model.Istaxed)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Firmcostrate" class="control-label"></label>
+                <input asp-for="Firmcostrate" class="form-control" />
+                <span asp-validation-for="Firmcostrate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employeecostrate" class="control-label"></label>
+                <input asp-for="Employeecostrate" class="form-control" />
+                <span asp-validation-for="Employeecostrate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Defaultvalue" class="control-label"></label>
+                <input asp-for="Defaultvalue" class="form-control" />
+                <span asp-validation-for="Defaultvalue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Percentvalue" class="control-label"></label>
+                <input asp-for="Percentvalue" class="form-control" />
+                <span asp-validation-for="Percentvalue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Incauto" class="control-label"></label>
+                <input asp-for="Incauto" class="form-control" />
+                <span asp-validation-for="Incauto" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Jan" /> @Html.DisplayNameFor(model => model.Jan)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Feb" /> @Html.DisplayNameFor(model => model.Feb)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Mar" /> @Html.DisplayNameFor(model => model.Mar)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Apr" /> @Html.DisplayNameFor(model => model.Apr)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="May" /> @Html.DisplayNameFor(model => model.May)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Jun" /> @Html.DisplayNameFor(model => model.Jun)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Jul" /> @Html.DisplayNameFor(model => model.Jul)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Aug" /> @Html.DisplayNameFor(model => model.Aug)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Sep" /> @Html.DisplayNameFor(model => model.Sep)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Oct" /> @Html.DisplayNameFor(model => model.Oct)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Nov" /> @Html.DisplayNameFor(model => model.Nov)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Dec" /> @Html.DisplayNameFor(model => model.Dec)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Startdate" class="control-label"></label>
+                <input asp-for="Startdate" class="form-control" />
+                <span asp-validation-for="Startdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Enddate" class="control-label"></label>
+                <input asp-for="Enddate" class="form-control" />
+                <span asp-validation-for="Enddate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

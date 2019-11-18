@@ -1,0 +1,147 @@
+@model Mercury_WebApp.Models.Salaryitem
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Salaryitem</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SalaryitemName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SalaryitemName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Istaxed)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Istaxed)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Firmcostrate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Firmcostrate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Employeecostrate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Employeecostrate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Defaultvalue)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Defaultvalue)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Percentvalue)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Percentvalue)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Incauto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Incauto)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Jan)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Jan)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Feb)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Feb)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Mar)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Mar)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Apr)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Apr)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.May)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.May)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Jun)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Jun)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Jul)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Jul)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Aug)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Aug)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Sep)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Sep)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Oct)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Oct)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nov)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nov)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Dec)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Dec)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Startdate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Startdate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Enddate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Enddate)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="SalaryitemId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

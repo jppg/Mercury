@@ -1,17 +1,17 @@
-@model Tuple<List<Mercury_WebApp.Models.Salarypackage>, Mercury_WebApp.Models.Finantialcondition>
+@model Mercury_WebApp.Models.EmployeeCentric
 
 @{
     ViewData["Title"] = "Finantial Conditions";
 }
 
 <h1>Finantial Conditions</h1>
-<h4>@Html.DisplayFor(model => model.Item2.Employee.EmployeeName)</h4>
+<h4>@Html.DisplayFor(model => model.FinantialCondition.Employee.EmployeeName)</h4>
 <p>
     <a asp-action="Create">Add New Item</a>
 </p>
-@if (Model.Item1.Count == 0)
+@if (Model.SalaryPackage.Count == 0)
 {
-    <a asp-action="DefaultValues" asp-route-id="@Model.Item2.FinantialconditionId">Add Default Values</a>
+    <a asp-action="DefaultValues" asp-route-id="@Model.FinantialCondition.FinantialconditionId">Add Default Values</a>
 }
 <table class="table">
     <thead>
@@ -65,7 +65,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Item1) {
+@foreach (var item in Model.SalaryPackage) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Salaryitem.SalaryitemName)
@@ -120,3 +120,6 @@
 }
     </tbody>
 </table>
+<p>
+    Total Cost: <span>@Html.DisplayFor(model => model.TotalCost)</span>
+</p>

@@ -17,6 +17,7 @@ namespace Mercury_WebApp.Models
 
         public virtual DbSet<Allocation> Allocation { get; set; }
         public virtual DbSet<Client> Client { get; set; }
+        public virtual DbSet<Config> Config { get; set; }
         public virtual DbSet<Employee> Employee { get; set; }
         public virtual DbSet<Finantialcondition> Finantialcondition { get; set; }
         public virtual DbSet<Maritalstatus> Maritalstatus { get; set; }
@@ -34,7 +35,7 @@ namespace Mercury_WebApp.Models
             }
         }
         */
-
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Allocation>(entity =>
@@ -86,6 +87,30 @@ namespace Mercury_WebApp.Models
                 entity.Property(e => e.Enddate)
                     .HasColumnName("enddate")
                     .HasColumnType("date");
+
+                entity.Property(e => e.Startdate)
+                    .HasColumnName("startdate")
+                    .HasColumnType("date");
+            });
+
+            modelBuilder.Entity<Config>(entity =>
+            {
+                entity.ToTable("config");
+
+                entity.Property(e => e.ConfigId).HasColumnName("config_id");
+
+                entity.Property(e => e.Enddate)
+                    .HasColumnName("enddate")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.Keyname)
+                    .IsRequired()
+                    .HasColumnName("keyname")
+                    .HasMaxLength(20);
+
+                entity.Property(e => e.Keyvalue)
+                    .HasColumnName("keyvalue")
+                    .HasColumnType("numeric");
 
                 entity.Property(e => e.Startdate)
                     .HasColumnName("startdate")
