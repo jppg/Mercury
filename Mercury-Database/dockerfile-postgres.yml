@@ -7,12 +7,15 @@ services:
     image: postgres
     restart: always
     environment:
+      POSTGRES_DB: Mercury
       POSTGRES_PASSWORD: postgres
     ports:
       - 5432:5432
+#    volumes:
+#      - c:/tmp:/var/lib/postgresql/data/pgdata
 
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8080:8080
+#  adminer:
+#    image: adminer
+#    restart: always
+#    ports:
+#      - 8080:8080

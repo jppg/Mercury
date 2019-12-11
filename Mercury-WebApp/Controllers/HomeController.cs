@@ -25,7 +25,8 @@ namespace Mercury_WebApp.Controllers
 
         public async Task<IActionResult> Index(string searchString)
         {
-
+            ViewBag.searchString = searchString;
+            
             List<Resume> lstResume = new List<Resume>();
 
             List<Finantialcondition> lstFinantialConds = await _context.Finantialcondition
@@ -81,7 +82,11 @@ namespace Mercury_WebApp.Controllers
                     Console.WriteLine(string.Format("=====> Margin: {0}", res.Margin));
                 }
 
-                if(string.IsNullOrEmpty(searchString) || res.EmployeeName.Contains(searchString) || (res.Client != null && res.Client.Contains(searchString)))
+                if(
+                    string.IsNullOrEmpty(searchString) || 
+                    res.EmployeeName.ToLower().Contains(searchString.ToLower()) || 
+                    (res.Client != null && res.Client.ToLower().Contains(searchString.ToLower()))
+                )
                     lstResume.Add(res);
                     
             }

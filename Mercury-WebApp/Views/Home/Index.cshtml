@@ -4,9 +4,9 @@
 }
 
 <form asp-controller="Home" asp-action="Index">
-    <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+    <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4 searchbox">
         <div class="input-group">
-            <input name="SearchString" type="search" placeholder="What're you searching for?" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+            <input name="SearchString" type="search" placeholder="Search for an employee or a client..." aria-describedby="button-addon1" class="form-control border-0 bg-light" value="@(ViewBag.searchString ?? String.Empty)">
             <div class="input-group-append">
                 <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
             </div>

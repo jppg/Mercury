@@ -7,7 +7,7 @@ drop table if exists allocation;
 drop table if exists employee;
 drop table if exists client;
 drop table if exists maritalstatus;
-
+drop table if exists config;
 */
 
 CREATE TABLE maritalstatus
@@ -136,4 +136,12 @@ create TABLE salarypackage(
     CONSTRAINT salarypackage_salaryitem_fkey FOREIGN KEY (salaryitem_id)
       REFERENCES salaryitem (salaryitem_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+create TABLE config(
+    config_id serial PRIMARY KEY,
+    keyname VARCHAR(20) NOT NULL,
+    keyvalue NUMERIC NOT NULL,
+    startdate DATE NOT NULL,
+    enddate DATE
 );

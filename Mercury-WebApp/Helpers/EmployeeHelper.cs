@@ -28,7 +28,9 @@ namespace Mercury_WebApp.Helpers
                         + (item.Jul ? 1 : 0) + (item.Aug ? 1 : 0) + (item.Sep ? 1 : 0)
                         + (item.Oct ? 1 : 0) + (item.Nov ? 1 : 0) + (item.Dec ? 1 :0);
             
-            decimal amount = (item.Itemvalue ?? 0) * (item.Percentvalue ?? 0) * nMonths;
+            decimal coPayment = item.Salaryitem.Firmcostrate ?? 1;
+
+            decimal amount = (item.Itemvalue ?? 0) * (item.Percentvalue ?? 0) * nMonths * coPayment;
             totalCost += amount;
             if(item.Salaryitem.Istaxed)
                 valueTaxable += amount;
